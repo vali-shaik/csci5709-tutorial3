@@ -1,3 +1,7 @@
+## Tutorial 3
+### Group 9 
+```CSCI5709 - Advanced Web Development ```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

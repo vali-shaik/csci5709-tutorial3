@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  padding: 1rem;
 }
 
 .App-logo {
@@ -35,4 +36,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+input.autocomplete {
+  padding: 0.5rem;
+  width: 300px;
+}
+
+.options-list {
+  padding-left: 0;
+  margin-top: 0;
+  list-style: none;
+  width: calc(300px + 1rem);
+  border: 1px solid #999;
+}
+
+.options-list li {
+  padding: 0.5rem;
+}
+
+.option-active,
+.options-list li:hover {
+  background-color: #d7d7d7;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.options-list li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
 }
