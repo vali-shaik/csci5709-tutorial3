@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Autocomplete from './Autocomplete'
+import Autocomplete from './Autocomplete';
+import Card from './Card';
 
 export default class Catalogs extends Component {
   constructor(props) {
@@ -24,13 +25,15 @@ export default class Catalogs extends Component {
                 />
               </td>
               <td>
-                <div>
-                  {/* add card component here based on text value */}
-                </div>
               </td>
             </tr>
           </tbody>
         </table>
+        <div>
+          {/* add card component here based on text value */
+            text ? <Card text={text}/> : ''
+          }
+        </div>
       </div>
     )
   }
