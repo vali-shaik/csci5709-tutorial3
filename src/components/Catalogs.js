@@ -24,16 +24,16 @@ export default class Catalogs extends Component {
                   setText={(text) => this.setState({ text })}
                 />
               </td>
-              <td>
+              <td>       
+                <div>
+                  {/* add card component here based on text value */
+                    text ? <Card text={text}/> : ''
+                  }
+                </div>
               </td>
             </tr>
           </tbody>
         </table>
-        <div>
-          {/* add card component here based on text value */
-            text ? <Card text={text}/> : ''
-          }
-        </div>
       </div>
     )
   }
