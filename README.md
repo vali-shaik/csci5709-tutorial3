@@ -8,7 +8,7 @@
 * Gamidi Vamsi, B00834696, vm709690@dal.ca
 * Itekela Satya Kumar, B00839907, st798799@dal.ca
 * Jogani Sneh K, B00843383, sn459857@dal.ca
-* Maniar Akash, ak429307@dal.ca
+* Maniar Akash, B00841446, ak429307@dal.ca
 * Shaik Vali, B00835822, vl216084@dal.ca
 
 
