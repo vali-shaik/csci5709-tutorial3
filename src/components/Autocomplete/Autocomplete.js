@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from "react";
 import classes from "./Autocomplete.module.css";
+import Card from "../Card/Card";
 import {
     AiFillCloseCircle,
     AiFillDownCircle,
@@ -12,35 +13,38 @@ export default class Autocomplete extends Component {
         activeOptionIndex: -1,
         filteredOptions: [],
         displayShow: true,
+        text: "",
+        isClicked: false,
     };
 
     onChange = ({ target: { value } }) => {
-        const { options, setText } = this.props;
+        const { options } = this.props;
         let filteredOptions = [];
         const regex = new RegExp(`^${value}`, "i");
         options.filter((item) =>
             regex.test(item) ? filteredOptions.push(item) : null
         );
-        setText(value);
         this.setState({
             filteredOptions:
                 filteredOptions.length > 0 ? filteredOptions : ["No options"],
             showOptions: true,
             activeOptionIndex: -1,
+            text: value,
+            isClicked: false,
         });
     };
 
     onKeyDown = ({ keyCode }) => {
         const { activeOptionIndex, filteredOptions } = this.state;
-        const { setText } = this.props;
         if (keyCode === 13 && activeOptionIndex > -1) {
             // Enter key press
             this.setState({
                 showOptions: false,
                 activeOptionIndex: -1,
                 filteredOptions: [],
+                text: filteredOptions[activeOptionIndex],
+                isClicked: true,
             });
-            setText(filteredOptions[activeOptionIndex]);
         } else if (keyCode === 38 && filteredOptions[0] !== "No options") {
             // up arrow key press
             if (activeOptionIndex > 0) {
@@ -58,21 +62,20 @@ export default class Autocomplete extends Component {
     };
 
     onOptionsListClick = ({ currentTarget: { innerText } }) => {
-        const { setText } = this.props;
-        setText(innerText);
         this.setState({
             showOptions: false,
             filteredOptions: [],
             activeOptionIndex: -1,
+            text: innerText,
+            isClicked: true,
         });
     };
 
     closeSuggestionsHandler = () => {
-        const { setText } = this.props;
-        setText("");
         this.setState({
             displayShow: false,
             showOptions: false,
+            text: "",
         });
     };
 
@@ -90,8 +93,9 @@ export default class Autocomplete extends Component {
                 filteredOptions,
                 activeOptionIndex,
                 displayShow,
+                text,
+                isClicked,
             },
-            props: { text },
             onChange,
             onKeyDown,
             onOptionsListClick,
@@ -127,15 +131,43 @@ export default class Autocomplete extends Component {
 
         return (
             <Fragment>
-                <input
-                    className="autocomplete"
-                    type="text"
-                    onChange={onChange}
-                    onKeyDown={onKeyDown}
-                    value={text}
-                    autoFocus
-                />
-                {showOptions && text && renderSuggestions()}
+                <div className={classes.Autocomplete}>
+                    <div className={classes.Inline}>
+                        <input
+                            className="autocomplete"
+                            type="text"
+                            onChange={onChange}
+                            onKeyDown={onKeyDown}
+                            value={text}
+                            autoFocus
+                        />
+                        {text ? (
+                            <AiFillCloseCircle
+                                className={classes.Icon}
+                                onClick={() => this.closeSuggestionsHandler}
+                            />
+                        ) : (
+                            ""
+                        )}
+                        {displayShow ? (
+                            <AiFillDownCircle
+                                className={classes.Icon}
+                                onClick={() => this.onShowHandler}
+                            />
+                        ) : (
+                            <AiFillUpCircle
+                                className={classes.Icon}
+                                onClick={() => this.onShowHandler}
+                            />
+                        )}
+                    </div>
+                    {showOptions && text && renderSuggestions()}
+                </div>
+                {isClicked ? (
+                    <Card text={text} className={classes.Card} />
+                ) : (
+                    ""
+                )}
             </Fragment>
         );
     }

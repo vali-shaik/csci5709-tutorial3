@@ -1,6 +1,7 @@
 import React from "react";
-import Catlogs from "./components/Catalogs/Catalogs";
+import Autocomplete from "./components/Autocomplete/Autocomplete";
 import "./App.css";
+import Countries from "./Countries";
 
 function App() {
     return (
@@ -9,7 +10,7 @@ function App() {
                 <p>Search for the Country</p>
             </header>
             <div className="App-Component">
-                <Catlogs />
+                <Autocomplete options={Countries} />
             </div>
         </div>
     );
