@@ -1,67 +1,49 @@
 .App {
-  /* text-align: center; */
-  padding: 1rem;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
+}
+
+.App-Component {
+    margin: 50px auto 0 auto;
+    width: 600px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-input.autocomplete {
-  padding: 0.5rem;
-  width: 300px;
-}
-
-.options-list {
-  padding-left: 0;
-  margin-top: 0;
-  list-style: none;
-  width: calc(300px + 1rem);
-  border: 1px solid #999;
-}
-
-.options-list li {
-  padding: 0.5rem;
-}
-
-.option-active,
-.options-list li:hover {
-  background-color: #d7d7d7;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.options-list li:not(:last-of-type) {
-  border-bottom: 1px solid #999;
+.li-active {
+    transform: scale(1.02);
+    padding-left: 15px;
+    background-color: rgba(0, 0, 0, 0.1) !important;
 }
