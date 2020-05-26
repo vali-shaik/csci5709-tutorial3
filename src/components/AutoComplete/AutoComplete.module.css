@@ -40,4 +40,28 @@ li:hover {
     background-color: rgba(128, 128, 128, 0.2);
     transform: scale(1.02);
     padding-left: 15px;
+    cursor: pointer;
+}
+
+.Inline {
+    display: flex;
+}
+
+.Icon {
+    padding: 10px;
+}
+
+ul.Disabled {
+    list-style-type: none;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid grey;
+}
+
+li.Disabled:hover {
+    cursor: not-allowed !important;
+    background-color: white;
+    transform: none !important;
+    padding-left: 5px;
 }
