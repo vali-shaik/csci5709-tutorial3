@@ -15,7 +15,21 @@ export default class Autocomplete extends Component {
     displayShow: true,
     text: "",
     isClicked: false,
+    cardArray: [],
   };
+
+  //   displayCards = (text) => {
+  //     this.state.cardArray.map((name) => <Card text={name} />);
+  //     return (
+  //       <div>
+  //         <Card
+  //           text={text}
+  //           cardArr={this.state.cardArray}
+  //           className={classes.Card}
+  //         />
+  //       </div>
+  //     );
+  //   };
 
   onChange = ({ target: { value } }) => {
     const { options } = this.props;
@@ -46,6 +60,7 @@ export default class Autocomplete extends Component {
         isClicked: true,
         displayShow: true,
       });
+      this.state.cardArray.push(filteredOptions[activeOptionIndex]);
     } else if (keyCode === 38 && filteredOptions[0] !== "No options") {
       // up arrow key press
       if (activeOptionIndex > 0) {
@@ -63,12 +78,15 @@ export default class Autocomplete extends Component {
   };
 
   onOptionsListClick = ({ currentTarget: { innerText } }) => {
+    const cardArr = this.state.cardArray;
+    cardArr.push(innerText);
     this.setState({
       showOptions: false,
       activeOptionIndex: -1,
       text: innerText,
       isClicked: true,
       displayShow: true,
+      cardArray: cardArr,
     });
   };
 
@@ -79,6 +97,7 @@ export default class Autocomplete extends Component {
       text: "",
       filteredOptions: this.props.options,
       isClicked: false,
+      cardArray: [],
     });
   };
 
@@ -166,7 +185,12 @@ export default class Autocomplete extends Component {
           </div>
           {showOptions && renderSuggestions()}
         </div>
-        {isClicked ? <Card text={text} className={classes.Card} /> : ""}
+        {
+          //Populating Card component for all searched/selected countries
+          isClicked
+            ? this.state.cardArray.map((name) => <Card text={name} />)
+            : ""
+        }
       </Fragment>
     );
   }
